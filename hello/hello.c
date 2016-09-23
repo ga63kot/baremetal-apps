@@ -29,8 +29,8 @@
 #include <stdio.h>
 #include <optimsoc-baremetal.h>
 
-int testfunc(int arg) {
-  return 27 + arg;
+int testfunc(int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+  return arg1 + arg2 + arg3 + arg4 + arg5 + arg6;
 }
 
 int main() {
@@ -44,8 +44,7 @@ int main() {
 	  printf(" rank %d is tile %d\n", r, optimsoc_get_ranktile(r));
   }
 
-  int var = testfunc(42);
-
+  int var = testfunc(1,2,3,4,5,6,7,8,9);
   printf("return value was %d\n", var);
   return 0;
 }
