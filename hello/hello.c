@@ -46,5 +46,9 @@ int main() {
 
   int var = testfunc(1,2,3,4,5,6,7,8,9);
   printf("return value was %d\n", var);
+
+  for (int i = 0; i < 100; ++i) {
+	  printf("Wait loop %d", i);
+  }
   return 0;
 }
