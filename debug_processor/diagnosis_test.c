@@ -14,6 +14,8 @@ struct trace_packet{
 
 int main() {
 
+	printf("Hello, this is the debug processor program\n");
+	
 	struct trace_packet diagnosis_results;
 
 	int *packet_available = (int*) 0xFE800004; //pointer to check if there is a packet available
@@ -57,7 +59,7 @@ int main() {
 
 			//size is in first address of packet
 			diagnosis_results.size = *current_packet;
-			//printf("SIZE = %u\n", diagnosis_results.size);
+			printf("SIZE = %u\n", diagnosis_results.size);
 
 			//event ID is in second address of packet
 			diagnosis_results.event_id = (*(current_packet+1)&(0x0000003F));
@@ -69,7 +71,7 @@ int main() {
 
 			//calculate number of arguments in trace packet
 			diagnosis_results.n_args = (diagnosis_results.size-4)/2;
-			//printf("N_ARGS = %u\n", diagnosis_results.n_args);
+			printf("N_ARGS = %u\n", diagnosis_results.n_args);
 
 			//loop for reading all args and store them from consecutive addresses
 			int i;
@@ -83,6 +85,6 @@ int main() {
 			//place packet in discard queue
 			*discard_queue = initial_trace_address + (4*diagnosis_results.size)/2;
 		}
-  }
+  	}
 
 }
